@@ -2,13 +2,24 @@ package domain;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+
+@Entity
 public class Curso implements BaseEntity<Long> {
+	@Id
+	@SequenceGenerator(name = "curso_id_generator", sequenceName = "curso_id_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "curso_id_generator")
 	private Long id;
-
+	
 	private String codigo;
-
+	
 	private String nombre;
-
+	
 	private Integer creditos;
 
 	private List<Curso> prerequisitos;
